@@ -1,0 +1,6 @@
+# ignore the following folders
+__pycache__/
+build/
+dist/
+
+# ignore the following files
