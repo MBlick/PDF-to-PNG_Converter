@@ -4,3 +4,4 @@ build/
 dist/
 
 # ignore the following files
+.main.spec
