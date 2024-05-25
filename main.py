@@ -27,7 +27,7 @@ class pdfToPngConverter(FileSystemEventHandler):
         elif event.event_type == "created":
             # get the path of the new file or URL
             filePath = event.src_path
-
+            
             fileName, oldExtension = fileHandling.getFileName(filePath)
             if (not fileHandling.checkExtension(oldExtension)):
                 print("Wrong filetype!")
@@ -72,6 +72,9 @@ class pdfToPngConverter(FileSystemEventHandler):
                     fileHandling.moveFile(filePath, desktopPathUser + "\\" + fileName + oldExtension)
                 except UnicodeDecodeError as error:
                     print("Error decoding file: " + str(error))
+                    fileHandling.moveFile(filePath, desktopPathUser + "\\" + fileName + oldExtension)
+                except fitz.FileDataError as e:
+                    print("An error occurred:", e)
                     fileHandling.moveFile(filePath, desktopPathUser + "\\" + fileName + oldExtension)
                 except:
                     print("General error: " + str(error))
