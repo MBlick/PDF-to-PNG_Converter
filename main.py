@@ -29,7 +29,7 @@ class pdfToPngConverter(FileSystemEventHandler):
             filePath = event.src_path
             
             fileName, oldExtension = fileHandling.getFileName(filePath)
-            if (not fileHandling.checkExtension(oldExtension)):
+            if not fileHandling.checkExtension(oldExtension):
                 print("Wrong filetype!")
                 fileHandling.moveFile(filePath, desktopPathUser + "\\" + fileName + oldExtension)
             else:
